@@ -27,6 +27,11 @@ const config: Config = {
         md: "640px",
         lg: "800px",
       },
+      colors: {
+        primaryColor: "#373229",
+        textColor: "#eaddcf",
+        tertiary: "#f4c095",
+      },
     },
   },
   variants: {
@@ -43,7 +48,7 @@ const config: Config = {
           filter: "blur(0px) brightness(100%)",
         },
         ".custom-activity-hover": {
-          filter: "blur(0.1px) brightness(40%)",
+          filter: "blur(0.1px) brightness(30%)",
           transition: "filter 0.5s",
         },
         ".image-hover-effect:hover": {

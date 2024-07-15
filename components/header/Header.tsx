@@ -1,67 +1,107 @@
-import Image from "next/image";
 import MobileNavigation from "./MobileNavigation";
 import NavLinks from "./NavLinks";
 import { navItems, navMedia } from "@/data";
 import React from "react";
 import { INavItem, INavMedia } from "@/data/interface";
+import { motion } from "framer-motion";
 
 /**
  * Header for the page, featuring the desktop and mobile navigation systems.
  * @returns header.
  */
 const Header = (): React.JSX.Element => {
+  const variants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  const transition = { duration: 0.5, ease: "easeInOut" };
   return (
     <header>
-      <nav className="fixed mx-auto top-0 left-0 right-0 z-10 p-4 bg-[#242526]">
+      <nav className="fixed mx-auto top-0 left-0 right-0 z-10 p-4 bg-primaryColor shadow-md">
         <div className="flex container justify-between items-center">
           {/* Name / or logo. */}
-          <div className="hidden xs:block title">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={variants}
+            transition={{ ...transition, delay: 0.2 }}
+            className="hidden xs:block title"
+          >
             <a
               href="#top"
-              className="sm:text-xs md:text-base lg:text-lg text-white hover:opacity-55 active:opacity-55 transition-all ease-in-out duration-800"
+              className="sm:text-xs lg:text-lg text-textColor hover:text-tertiary transition-all ease-in-out duration-800"
             >
-              Ameer Ghazal
+              new AG();
             </a>
-          </div>
+          </motion.div>
           {/* Desktop Navigation bar. */}
-          <div className="hidden md:block links_menu">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={variants}
+            transition={{ ...transition, delay: 0.4 }}
+            className="hidden md:block"
+          >
             {/* Navigation */}
             <ul className="flex gap-4 items-center">
               {
                 // Map each section name to the relevant nav link.
                 navItems.map((link: INavItem, index: number) => {
                   return (
-                    <li key={index}>
+                    <motion.li
+                      key={index}
+                      initial="hidden"
+                      animate="visible"
+                      variants={variants}
+                      transition={{
+                        ...transition,
+                        delay: 0.4 + (index + 1) * 0.2,
+                      }}
+                    >
                       <NavLinks href={link.path} title={link.title} />
-                    </li>
+                    </motion.li>
                   );
                 })
               }
             </ul>
-          </div>
+          </motion.div>
           {/* Social media bar navigation. */}
-          <div className="media_menu justify-end">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={variants}
+            transition={{ ...transition, delay: 0.6 }}
+            className="justify-end"
+          >
             <ul className="flex items-center gap-1.5">
               {
                 // Map each section name to the relevant nav link.
                 navMedia.map((social: INavMedia, index: number) => {
                   return (
-                    <li key={index}>
-                      <a href={social.link} target="_blank">
-                        <Image
-                          key={social.name}
-                          src={social.src}
-                          alt={social.name}
-                          width={social.width}
-                          height={social.height}
-                        />
+                    <motion.li
+                      key={index}
+                      initial="hidden"
+                      animate="visible"
+                      variants={variants}
+                      transition={{
+                        ...transition,
+                        delay: 0.6 + (index + 1) * 0.2,
+                      }}
+                    >
+                      <a
+                        href={social.link}
+                        className="text-textColor hover:text-tertiary transition-all ease-in-out duration-800"
+                        target="_blank"
+                      >
+                        {social.fragment}
                       </a>
-                    </li>
+                    </motion.li>
                   );
                 })
               }
             </ul>
-          </div>
+          </motion.div>
 
           {/* Mobile Navigation, hamburger menu screen. */}
           <div className="flex items-center justify-center md:hidden">

@@ -1,4 +1,16 @@
-import { IActivity, IExperienceItem, INavItem, INavMedia } from "./interface";
+import {
+  IActivity,
+  IExperienceItem,
+  INavItem,
+  INavMedia,
+  IProject,
+} from "./interface";
+import {
+  IconBrandDiscord,
+  IconBrandGithub,
+  IconBrandLinkedin,
+  IconMail,
+} from "@tabler/icons-react";
 
 export const navItems: INavItem[] = [
   {
@@ -10,35 +22,43 @@ export const navItems: INavItem[] = [
     title: "Experience",
   },
   {
-    path: "#projects",
-    title: "Projects",
-  },
-  {
     path: "#activites",
     title: "Activities",
+  },
+  {
+    path: "#projects",
+    title: "Projects",
   },
 ];
 
 export const navMedia: INavMedia[] = [
   {
     name: "LinkedIn",
-    src: "/linkedin.svg",
+    fragment: <IconBrandLinkedin />,
     height: 24,
     width: 24,
     link: "https://www.linkedin.com/in/ameerghazal/",
   },
   {
     name: "GitHub",
-    src: "/github.svg",
+    fragment: <IconBrandGithub />,
     height: 24,
     width: 24,
     link: "https://github.com/ameerghazal",
   },
   {
     name: "Discord",
-    src: "/discord.svg",
+    fragment: <IconBrandDiscord />,
     height: 24,
     width: 24,
+    link: "https://discordapp.com/users/ameerghazal",
+  },
+  {
+    name: "Outlook",
+    fragment: <IconMail />,
+    height: 24,
+    width: 24,
+    link: "mailto:officialameerghazal@outlook.com",
   },
 ];
 
@@ -60,6 +80,15 @@ export const experiences: IExperienceItem[] = [
     bulletPoints: [
       "Developing an A.I. powered chatbot for search engines.",
       "Working with many people.",
+    ],
+  },
+  {
+    title: "Software Engineer Fellow",
+    company: "Headstarter AI",
+    dates: "July 2024 - Present",
+    bulletPoints: [
+      "Working within a team of 20 to develop a component application.",
+      "Git version control.",
     ],
   },
   {
@@ -96,6 +125,8 @@ export const activities: IActivity[] = [
       "Organize for 170+ students and 20+ companies.",
       "Over $20,000+ raised.",
     ],
+    headerSize: "text-xl",
+    descriptionSize: "text-sm",
   },
   {
     classNames:
@@ -107,10 +138,12 @@ export const activities: IActivity[] = [
     imgStyles: "object-center",
     title: "Web Developer",
     content: [
-      "Largest Hackathon in Oklahoma.",
-      "Organize for 170+ students and 20+ companies.",
-      "Over $20,000+ raised.",
+      "Full-stack website creation.",
+      "React.js and Node.js.",
+      "Increasing club retention by 20%.",
     ],
+    headerSize: "text-md",
+    descriptionSize: "text-sm",
   },
   {
     classNames:
@@ -122,10 +155,11 @@ export const activities: IActivity[] = [
     imgStyles: "p-10",
     title: "Programming Instructor",
     content: [
-      "Largest Hackathon in Oklahoma.",
-      "Organize for 170+ students and 20+ companies.",
-      "Over $20,000+ raised.",
+      "Instruct Python, C#, and JavaScript.",
+      "Project building with 50+ young students.",
     ],
+    headerSize: "text-sm",
+    descriptionSize: "text-xs",
   },
   {
     classNames:
@@ -136,10 +170,11 @@ export const activities: IActivity[] = [
     alt: "OU AI/ML club logo",
     title: "Technical Officer",
     content: [
-      "Largest Hackathon in Oklahoma.",
-      "Organize for 170+ students and 20+ companies.",
-      "Over $20,000+ raised.",
+      "Conducting workshops on various ML learning models and libraries.",
+      "Expanding AI understanding among 400+ students.",
     ],
+    headerSize: "text-lg",
+    descriptionSize: "text-sm",
   },
 
   {
@@ -151,10 +186,11 @@ export const activities: IActivity[] = [
     alt: "OU Highschool Student Leadership Council team.",
     title: "Operations Officer",
     content: [
-      "Largest Hackathon in Oklahoma.",
-      "Organize for 170+ students and 20+ companies.",
-      "Over $20,000+ raised.",
+      "Counseled a year-long mentorship project.",
+      "Over 500+ high-schoolers.",
     ],
+    headerSize: "text-lg",
+    descriptionSize: "text-sm",
   },
   {
     classNames:
@@ -165,9 +201,41 @@ export const activities: IActivity[] = [
     alt: "OU Student Government Logo",
     title: "Ways and Means Officer",
     content: [
-      "Largest Hackathon in Oklahoma.",
-      "Organize for 170+ students and 20+ companies.",
-      "Over $20,000+ raised.",
+      "Fiscal assessments for 50+ student organizations.",
+      "Optimized share with data-driven decisions.",
     ],
+    headerSize: "text-lg",
+    descriptionSize: "text-sm",
+  },
+];
+
+export const projects: IProject[] = [
+  {
+    title: "Outline - Social Media",
+    description:
+      "Platform for users to create a personalized outline of their day, allowing them to share real moments and thoughts in a structured format with followers.",
+    languages: ["React Native", "Python", "PostgreSQL", "Firebase"],
+    link: "https://github.com/ameerghazal/Outline-Application",
+  },
+  {
+    title: "Java GPS Tracker",
+    description:
+      "GPS tracker that leverages a scraped dataset, OOP principles, and Java GUI to track the distances, find the average speeds, and showcase a 2D model.",
+    languages: ["Java", "JUnit", "Scraping", "OOP"],
+    link: "https://github.com/ameerghazal/project5-ameerghazal",
+  },
+  {
+    title: "Recipe Application",
+    description:
+      "Web app, allowing users to search, bookmark, and add recipes. Recipies fetched from a public API and leveraged through netlify (CI/CD) capabilites. ",
+    languages: ["React.js", "JavaScript", "HTML/CSS", "Git"],
+    link: "https://github.com/ameerghazal/forkify-recipe-application",
+  },
+  {
+    title: "Car Price Prediction Model",
+    description:
+      "ML supervised learning model, predecting car sales prices using Linear Regression, KNN, Decision Trees, and Random Forest algorithms from scratch.",
+    languages: ["Python", "A.I.", "Supervised Learning", "Sci-kit"],
+    link: "https://github.com/ameerghazal/ML-Supervised-Learning",
   },
 ];

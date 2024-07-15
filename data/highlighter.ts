@@ -23,7 +23,7 @@ export const customStyle: { [key: string]: CSSProperties } = {
   },
   'pre[class*="language-"]': {
     color: "#d4d4d4",
-    background: "transparent",
+    // background: "transparent",
     textAlign: "left",
     whiteSpace: "pre",
     wordSpacing: "normal",

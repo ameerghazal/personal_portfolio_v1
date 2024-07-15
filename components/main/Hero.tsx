@@ -9,7 +9,7 @@ const Hero = (): React.JSX.Element => {
     <section id="hero" className="flex items-center gap-20 mt-24">
       <div className="flex flex-col gap-10 items-center">
         <div className="flex flex-col items-center">
-          <h1 className="p-0 m-0 font-bold text-4xl text-center">
+          <h1 className="p-0 m-0 font-bold text-4xl text-center text-[#eaddcf]">
             Hello, my name is
             <br /> Ameer Ghazal.
           </h1>
@@ -33,13 +33,7 @@ const Hero = (): React.JSX.Element => {
                   return (
                     <li key={index}>
                       <a href={social.link} target="_blank">
-                        <Image
-                          key={social.name}
-                          src={social.src}
-                          alt={social.name}
-                          width={social.width}
-                          height={social.height}
-                        />
+                        {social.fragment}
                       </a>
                     </li>
                   );

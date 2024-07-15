@@ -1,3 +1,5 @@
+import { ReactElement } from "react";
+
 export interface INavItem {
   path: string;
   title: string;
@@ -5,7 +7,7 @@ export interface INavItem {
 
 export interface INavMedia {
   name: string;
-  src: string;
+  fragment: ReactElement;
   height: number;
   width: number;
   link?: string;
@@ -27,6 +29,8 @@ export interface IActivity {
   title: string;
   content: string[];
   imgStyles?: string;
+  headerSize: string;
+  descriptionSize: string;
 }
 
 export interface IImageProp {
@@ -34,4 +38,11 @@ export interface IImageProp {
   height: number;
   width: number;
   alt: string;
+}
+
+export interface IProject {
+  title: string;
+  description: string;
+  languages: string[];
+  link: string;
 }

@@ -31,21 +31,22 @@ const FlippableCard: React.FC<IActivity> = (props) => {
             />
           </div>
           <div className="flex flex-col absolute inset-0 items-center justify-center p-4">
-            <h2 className="p-0 m-4 font-bold">
+            <h2
+              className={`p-0 m-4 font-bold ${props.headerSize} text-textColor`}
+            >
               {props.title}, {props.club}
             </h2>
-            <ul className="flex flex-col gap-4 text-sm">
+            <ul className={`flex flex-col gap-4 ${props.descriptionSize}`}>
               {props.content.map((item: string, index: number) => (
-                <li
-                  key={index}
-                  className="before:content-['\003C__'] after:content-['_/_\003E']"
-                >
-                  {item}
+                <li key={index}>
+                  <span className="text-textColor">
+                    &lt;{item}&nbsp;&#47;&gt;
+                  </span>
                 </li>
               ))}
             </ul>
             <a
-              className="absolute top-8 right-8 text-[#6089B4] hover:opacity-55 active:opacity-55 transition-all duration-800"
+              className="absolute top-8 right-8 text-tertiary hover:opacity-55 active:opacity-55 transition-all duration-800"
               href={props.href}
               target="_blank"
               rel="noopener noreferrer"

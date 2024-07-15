@@ -4,27 +4,28 @@ import { customStyle } from "@/data/highlighter";
 
 const CodeBlock: React.FC = () => {
   const codeString = `
-  export default HeroSection = (name: string) => {
+  export default AG = (name: string) => {
     return(
       <section className="flex justify-center items-center">
         <h1>Hello, my name is Ameer Ghazal.</h1>
-        <span>Let's connect.</span>
+        <span>I program ... or so I was thought.</span>
         <Image src="/headshot.svg" alt="cool guy!" />
         <Media />
-        <CodeBlock language="tsx"/>
+        <CodeBlock language="tsx" />
       </section>
     );
   };
     
     `;
+
   return (
     <div>
       <SyntaxHighlighter
         language="tsx"
         style={customStyle}
-        customStyle={{
-          background: "transparent",
-        }}
+        // customStyle={{
+        //   background: "transparent",
+        // }}
       >
         {codeString}
       </SyntaxHighlighter>
