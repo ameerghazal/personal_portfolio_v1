@@ -1,51 +1,82 @@
-import { navMedia } from "@/data";
-import { INavMedia } from "@/data/interface";
-import Image from "next/image";
-import CodeBlock from "../ui/CodeBlock";
-import React from "react";
+import React, { useRef } from "react";
+import { MotionValue, motion, useInView, useTransform } from "framer-motion";
 
-const Hero = (): React.JSX.Element => {
+const phrases = ["HEY, I'M AMEER!", "HEY, I'M أمير!", "HEY, I'M アミール!"];
+
+const Hero = ({
+  scrollYProgress,
+}: {
+  scrollYProgress: MotionValue<number>;
+}): React.JSX.Element => {
+  // Animation. Takes a value and maps a range to the value. Reduce scale by 20% based on progress.
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.5]);
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, -7]);
+
   return (
-    <section id="hero" className="flex items-center gap-20 mt-24">
-      <div className="flex flex-col gap-10 items-center">
-        <div className="flex flex-col items-center">
-          <h1 className="p-0 m-0 font-bold text-4xl text-center text-[#eaddcf]">
-            Hello, my name is
-            <br /> Ameer Ghazal.
+    <motion.section
+      style={{ scale, rotate }}
+      className="bg-primaryColor"
+      id="hero"
+    >
+      <div className="flex gap-40 justify-center items-center h-screen">
+        <MaskText />
+
+        {/* <div className="grid grid-rows-3 grid-cols-3 gap-6 w-full px-20 items-center">
+          <h1 className="text-9xl font-semibold text-textColor row-start-1 col-span-2 justify-self-start">
+            HEY, I&apos;M AMEER!
           </h1>
-          <span className="text-xl text-[#ADB7BE]">Let&apos;s connect.</span>
-        </div>
-        <div className="flex gap-10 justify-center items-center w-full">
-          <div className="w-[200px] h-[200px] rounded-full overflow-hidden">
-            <Image
-              src="/headshot.jpg"
-              alt="Headshot."
-              className="object-cover w-full h-full"
-              width={300}
-              height={300}
-            />
-          </div>
-          <div>
-            <ul className="flex flex-col items-center gap-1.5">
-              {
-                // Map each section name to the relevant nav link.
-                navMedia.map((social: INavMedia, index: number) => {
-                  return (
-                    <li key={index}>
-                      <a href={social.link} target="_blank">
-                        {social.fragment}
-                      </a>
-                    </li>
-                  );
-                })
-              }
-            </ul>
-          </div>
-        </div>
+          <span className="text-lg row-start-1 col-start-3 justify-self-end">
+            Computer Science Junior at OU.
+          </span>
+          <h1
+            className="text-9xl font-semibold text-textColor justify-self-center row-start-2 col-span-full"
+            // style={{ color: "transparent", WebkitTextStroke: "1px white" }}
+          >
+            HEY, I&apos;M أمير!
+          </h1>
+          <h1 className="text-9xl font-semibold text-textColor row-start-3 col-span-full justify-self-end ">
+            HEY, I&apos;M アミール!
+          </h1>
+        </div> */}
       </div>
-      <CodeBlock />
-    </section>
+    </motion.section>
   );
 };
+
+export function MaskText() {
+  const body = useRef(null);
+  // When we are within 75% of the vh
+  const isInView = useInView(body, { once: true, margin: "-50%" });
+
+  const animation = {
+    initial: { y: "100%" },
+
+    enter: (i: any) => ({
+      y: "0",
+      transition: {
+        duration: 1.0,
+        ease: [0.33, 1, 0.68, 1],
+        delay: 0.075 * i,
+      },
+    }),
+  };
+
+  return (
+    <div ref={body} className="flex flex-col gap-6">
+      {phrases.map((phrase: string, i: number) => (
+        <motion.h1
+          key={i}
+          custom={i}
+          variants={animation}
+          initial="initial"
+          animate={isInView ? "enter" : ""}
+          className=" xl:text-9xl lg:text-8xl font-semibold text-textColor overflow-hidden"
+        >
+          {phrase}
+        </motion.h1>
+      ))}
+    </div>
+  );
+}
 
 export default Hero;

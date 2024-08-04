@@ -4,11 +4,6 @@ import { useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { customStyle } from "@/data/highlighter";
 
-interface ISplash {
-  showMenu: boolean;
-  setShowMenu: Dispatch<SetStateAction<boolean>>;
-}
-
 const Splash = ({
   showMenu,
   setShowMenu,
@@ -84,7 +79,9 @@ const Splash = ({
                   : "opacity-0 pointer-events-none"
               }  transition-all duration-200 ease-in hover:bg-gray-600 active:bg-gray-700`}
             >
-              <span className="text-lg">Press Me: Fetch Ameer's Website.</span>
+              <span className="text-lg">
+                Press Me: Fetch Ameer&apos;s Website.
+              </span>
             </button>
           </div>
         </div>

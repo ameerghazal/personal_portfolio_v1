@@ -1,3 +1,4 @@
+import { MotionValue } from "framer-motion";
 import { ReactElement } from "react";
 
 export interface INavItem {
@@ -8,29 +9,30 @@ export interface INavItem {
 export interface INavMedia {
   name: string;
   fragment: ReactElement;
-  height: number;
-  width: number;
-  link?: string;
+  link: string;
 }
 
-export interface IExperienceItem {
+export interface IExperience {
   title: string;
   company: string;
   dates: string;
   bulletPoints: string[];
+  img?: string;
 }
 
 export interface IActivity {
-  classNames: string;
   club: string;
   href: string;
   src: string;
   alt: string;
   title: string;
-  content: string[];
+  content: string;
+  linkDescription: string;
   imgStyles?: string;
   headerSize: string;
   descriptionSize: string;
+  backgroundColor: string;
+  textColor: string;
 }
 
 export interface IImageProp {
@@ -43,6 +45,14 @@ export interface IImageProp {
 export interface IProject {
   title: string;
   description: string;
-  languages: string[];
+  technologies: string[];
   link: string;
+  img: string;
+  alt: string;
+}
+
+export interface IPicture {
+  src: string;
+  alt: string;
+  styles: string;
 }

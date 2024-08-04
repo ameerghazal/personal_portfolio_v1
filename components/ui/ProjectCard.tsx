@@ -1,34 +1,30 @@
-import { IconBrandGithub } from "@tabler/icons-react";
 import React from "react";
 import { IProject } from "@/data/interface";
+import Link from "next/link";
+import Image from "next/image";
 
-const ProjectCard: React.FC<IProject> = ({
-  title,
-  description,
-  languages,
-  link,
-}) => {
+const ProjectCard: React.FC<{ project: IProject }> = ({ project }) => {
+  const container = React.useRef<HTMLDivElement | null>(null);
+
   return (
-    <a href={link} target="_blank">
-      <div className="w-full rounded-lg p-7 flex flex-col justify-center gap-6 border-2 border-transparent hover:-translate-y-2 hover:border-tertiary transition-transform transition-border duration-300 ease-in-out group">
-        <header>
-          <div className="flex justify-between">
-            <h3 className="text-xl text-[#eaddcf] font-semibold tracking-wide">
-              {title}
-            </h3>
-            <IconBrandGithub className="group-hover:text-tertiary group-hover:fill-tertiary" />
-          </div>
-          <p className="text-sm  mt-3">{description}</p>
-        </header>
-        <footer>
-          <ul className="text-xs text-tertiary flex items-center gap-1 justify-between flex-wrap">
-            {languages.map((language: string, index: number) => (
-              <li key={index}>{language}</li>
-            ))}
-          </ul>
-        </footer>
+    <div ref={container} className="flex flex-col gap-4">
+      <div className="h-full w-full">
+        <Image
+          src={project.img}
+          width={400}
+          height={400}
+          alt={project.alt}
+          className="max-w-none h-full"
+        />
       </div>
-    </a>
+      <div className="flex flex-col gap-4 items-start justify-start">
+        <h3 className="font-bold text-4xl text-textColor">{project.title}</h3>
+        <p className="font-medium text-3xl">{project.description}</p>
+        <span className="text-tertiary text-2xl">
+          {project.technologies.join(", ")}
+        </span>
+      </div>
+    </div>
   );
 };
 

@@ -7,76 +7,84 @@ import Hero from "@/components/main/Hero";
 import Lifestyle from "@/components/main/Lifestyle";
 import Projects from "@/components/main/Projects";
 import Splash from "@/components/main/Splash";
-import { useState } from "react";
-import { motion } from "framer-motion";
-import {
-  slideInFromLeft,
-  slideInFromRight,
-  slideInFromTop,
-} from "@/utils/motion";
+import React from "react";
+import { motion, useScroll } from "framer-motion";
+import { slideInFromLeft } from "@/utils/motion";
+import Lenis from "lenis";
+import Gallery from "@/components/main/Gallery";
 
 export default function Home(): JSX.Element {
-  const [showMenu, setShowMenu] = useState<boolean>(false);
+  const [showMenu, setShowMenu] = React.useState<boolean>(true);
+  const [dimension, setDimension] = React.useState({ width: 0, height: 0 });
+
+  // Smooth scrolling.
+  React.useEffect(() => {
+    const lenis = new Lenis();
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    const resize = () => {
+      setDimension({ width: window.innerWidth, height: window.innerHeight });
+    };
+
+    window.addEventListener("resize", resize);
+    requestAnimationFrame(raf);
+    resize();
+
+    return () => {
+      window.removeEventListener("resize", resize);
+    };
+  }, []);
+
+  // Old transitions.
   const variants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
   };
-
   const transition = { duration: 0.5, ease: "easeInOut" };
+
+  // Hero to Lifestyle scroll parallax.
+  const lifestyle = React.useRef(null);
+  const { scrollYProgress: lifestyleScroll } = useScroll({
+    target: lifestyle,
+    offset: ["start start", "end end"],
+  });
+
   return (
     <>
-      <Splash showMenu={showMenu} setShowMenu={setShowMenu} />
+      {/* <Splash showMenu={showMenu} setShowMenu={setShowMenu} /> */}
       {showMenu && (
         <>
           <Header />
-          <main className="flex min-h-screen flex-col bg-[#373229] items-center">
-            <div className="mx-auto px-8 items-center place-content-center">
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={slideInFromLeft(1.5)}
-              >
-                <Hero />
+          <main className="flex min-h-screen flex-col bg-white">
+            <div ref={lifestyle} className="relative h-[200vh]">
+              <motion.div className="sticky top-0 h-screen bg-black">
+                <Hero scrollYProgress={lifestyleScroll} />
               </motion.div>
 
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={variants}
-                transition={{ ...transition, delay: 1.7 }}
-              >
-                <Lifestyle />
+              <motion.div className="relative h-screen mt-20 bg-primaryColor rounded-tl-[1.5rem] rounded-tr-[1.5rem]">
+                <Lifestyle scrollYProgress={lifestyleScroll} />
               </motion.div>
+            </div>
 
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={variants}
-                transition={{ ...transition, delay: 1.9 }}
-              >
-                <Experience />
-              </motion.div>
-
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={variants}
-                transition={{ ...transition, delay: 2.1 }}
-              >
-                <Activities />
-              </motion.div>
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={variants}
-                transition={{ ...transition, delay: 2.3 }}
-              >
-                <Projects />
-              </motion.div>
-              {/* <Contact /> */}
+            <div className="bg-primaryColor">
+              <Experience />
+            </div>
+            <div className="bg-primaryColor">
+              <Activities />
+            </div>
+            <div className="bg-primaryColor">
+              <Projects />
+            </div>
+            <div className="bg-primaryColor">
+              <Gallery width={dimension.width} height={dimension.height} />
             </div>
           </main>
-          <Footer />
+          <div className="bg-primaryColor">
+            <Footer />
+          </div>
         </>
       )}
     </>
@@ -88,3 +96,4 @@ export default function Home(): JSX.Element {
 // OG Brown:#55423d
 // nice gree: #708D81
 // green: #709176
+// Green: rgb(63, 76, 50)

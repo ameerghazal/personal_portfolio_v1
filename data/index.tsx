@@ -1,8 +1,9 @@
 import {
   IActivity,
-  IExperienceItem,
+  IExperience,
   INavItem,
   INavMedia,
+  IPicture,
   IProject,
 } from "./interface";
 import {
@@ -15,54 +16,58 @@ import {
 export const navItems: INavItem[] = [
   {
     path: "#lifestyle",
-    title: "Lifestyle",
+    title: "lifestyle",
   },
   {
     path: "#experience",
-    title: "Experience",
+    title: "experience",
   },
   {
     path: "#activites",
-    title: "Activities",
+    title: "activities",
   },
   {
     path: "#projects",
-    title: "Projects",
+    title: "projects",
   },
+  {
+    path: "#gallery",
+    title: "gallery",
+  },
+];
+
+export const lifestyle: string[] = [
+  "Hello! My name is Ameer Ghazal. I'm a Computer Science major, Mathematics minor at the University of Oklahoma.",
+  "I'm currently a Software Development Intern at Paycom and an Undergraduate Researcher at OU.",
+  "Further, I am the Finance Director for Hacklahoma and a Web Developer for the UI/UX Club.",
+  "In my free-time, I like to play basketball, film YouTube and TikTok videos, binge anime, program, and design.",
+  "I'd also like to travel the world, but we'll see how that goes...",
 ];
 
 export const navMedia: INavMedia[] = [
   {
     name: "LinkedIn",
-    fragment: <IconBrandLinkedin />,
-    height: 24,
-    width: 24,
+    fragment: <IconBrandLinkedin width={50} height={50} />,
     link: "https://www.linkedin.com/in/ameerghazal/",
   },
   {
     name: "GitHub",
-    fragment: <IconBrandGithub />,
-    height: 24,
-    width: 24,
+    fragment: <IconBrandGithub width={50} height={50} />,
     link: "https://github.com/ameerghazal",
   },
   {
     name: "Discord",
-    fragment: <IconBrandDiscord />,
-    height: 24,
-    width: 24,
+    fragment: <IconBrandDiscord width={50} height={50} />,
     link: "https://discordapp.com/users/ameerghazal",
   },
   {
     name: "Outlook",
-    fragment: <IconMail />,
-    height: 24,
-    width: 24,
+    fragment: <IconMail width={50} height={50} />,
     link: "mailto:officialameerghazal@outlook.com",
   },
 ];
 
-export const experiences: IExperienceItem[] = [
+export const experiences: IExperience[] = [
   {
     title: "Software Developer Intern",
     company: "Paycom",
@@ -113,129 +118,196 @@ export const experiences: IExperienceItem[] = [
 
 export const activities: IActivity[] = [
   {
-    classNames:
-      "grid col-start-1 col-end-6 row-start-1 row-end-7 rounded-lg relative overflow-hidden",
     club: "Hacklahoma",
     href: "https://hacklahoma.org/",
-    src: "/hacklahoma_team.svg",
+    src: "/activites/hacklahoma_team.svg",
     alt: "Hacklahoma team photo.",
     title: "Finance Director",
-    content: [
-      "Largest Hackathon in Oklahoma.",
-      "Organize for 170+ students and 20+ companies.",
-      "Over $20,000+ raised.",
-    ],
+    content:
+      "for the largest hackathon in Oklahoma, stationed at the University of Oklahoma. Our team has organized for 170+ students, with partnerships from 20+ companies. We have raised over $20,000. Another exciting year coming up!",
+    linkDescription: "Check out our website",
     headerSize: "text-xl",
     descriptionSize: "text-sm",
+    backgroundColor: "#4A3B2E",
+    textColor: "white",
   },
   {
-    classNames:
-      "grid col-start-6 col-end-9 row-start-1 row-end-7 rounded-lg relative overflow-hidden",
     club: "OU UI/UX",
     href: "https://www.instagram.com/ou_uxdesign/",
-    src: "/UI_logo.svg",
+    src: "/activites/UI_logo.svg",
     alt: "OU UI/UX club logo",
     imgStyles: "object-center",
     title: "Web Developer",
-    content: [
-      "Full-stack website creation.",
-      "React.js and Node.js.",
-      "Increasing club retention by 20%.",
-    ],
+    content:
+      "for the UI/UX club at the University of Oklahoma. In the midst of creating the club's first website, featuring React.js, Node.js, and MySQL.",
+    linkDescription: "Check out our instagram",
     headerSize: "text-md",
     descriptionSize: "text-sm",
+    backgroundColor: "#584E3D",
+    textColor: "white",
   },
   {
-    classNames:
-      "grid col-start-9 col-end-11 row-start-1 row-end-5 bg-black rounded-lg relative overflow-hidden",
     club: "iCode",
     href: "https://icodeschool.com/",
-    src: "/icode_logo.svg",
+    src: "/experiences/icode_logo.svg",
     alt: "iCode Logo",
     imgStyles: "p-10",
     title: "Programming Instructor",
-    content: [
-      "Instruct Python, C#, and JavaScript.",
-      "Project building with 50+ young students.",
-    ],
+    content:
+      "for 50+ young students. Classes include core coding principles, project building, and OOP paradigms. Courses were taught in Python, C#, and JavaScript.",
+    linkDescription: "Check out the website",
     headerSize: "text-sm",
     descriptionSize: "text-xs",
+    backgroundColor: "#65624C",
+    textColor: "white",
   },
   {
-    classNames:
-      "grid col-start-1 col-end-5 row-start-7 row-end-11 rounded-lg relative overflow-hidden",
     club: "OU AI/ML",
     href: "https://www.instagram.com/ou.artificial/",
-    src: "/AI_logo.svg",
+    src: "/activites/AI_logo.svg",
     alt: "OU AI/ML club logo",
     title: "Technical Officer",
-    content: [
-      "Conducting workshops on various ML learning models and libraries.",
-      "Expanding AI understanding among 400+ students.",
-    ],
+    content:
+      "for the AI/ML club at the University of Oklahoma. Our team conducts workshops on various ML learning models and libraries, further expanding AI understanding among our 400+ club student body.",
+    linkDescription: "Checkout out our instagram",
     headerSize: "text-lg",
     descriptionSize: "text-sm",
+    backgroundColor: "#81886A",
+    textColor: "white",
   },
 
   {
-    classNames:
-      "grid col-start-5 col-end-9 row-start-7 row-end-11  rounded-lg relative overflow-hidden",
     club: "OU HSLC",
     href: "https://www.ou.edu/sga/cac/high-school-leadership-conference",
-    src: "/hslc_team.svg",
+    src: "/activites/hslc_hype.svg",
     alt: "OU Highschool Student Leadership Council team.",
     title: "Operations Officer",
-    content: [
-      "Counseled a year-long mentorship project.",
-      "Over 500+ high-schoolers.",
-    ],
+    content:
+      "for the CAC High School Student Leadership Council at the University of Oklahoma. Our team works on a year-long mentorship project for 500+ highschool students, condensed into a 3-day, empowering weekend.",
+    linkDescription: "Check out our mission",
     headerSize: "text-lg",
     descriptionSize: "text-sm",
-  },
-  {
-    classNames:
-      "grid col-start-9 col-end-11 row-start-5 row-end-11 rounded-lg relative overflow-hidden",
-    club: "OU SGA",
-    href: "https://www.ou.edu/sga",
-    src: "/ou_sga.svg",
-    alt: "OU Student Government Logo",
-    title: "Ways and Means Officer",
-    content: [
-      "Fiscal assessments for 50+ student organizations.",
-      "Optimized share with data-driven decisions.",
-    ],
-    headerSize: "text-lg",
-    descriptionSize: "text-sm",
+    backgroundColor: "#8E9C79",
+    textColor: "white",
   },
 ];
 
 export const projects: IProject[] = [
   {
+    title: "Personal Portfolio",
+    description:
+      "Personal page for the world to catch a glimpse of my life. Discover my journey and achievements, all hosted with continuous CI/CD updates. ",
+    technologies: ["Next.js", "TypeScript", "Tailwind", "Framer", "GSAP"],
+    link: "https://github.com/ameerghazal/personal_portfolio",
+    img: "/projects/portfolio.svg",
+    alt: "Personal portfolio logo",
+  },
+  {
     title: "Outline - Social Media",
     description:
       "Platform for users to create a personalized outline of their day, allowing them to share real moments and thoughts in a structured format with followers.",
-    languages: ["React Native", "Python", "PostgreSQL", "Firebase"],
+    technologies: ["React Native", "Python", "PostgreSQL", "Firebase"],
     link: "https://github.com/ameerghazal/Outline-Application",
+    img: "/projects/outline_logo.svg",
+    alt: "Outline logo",
   },
   {
     title: "Java GPS Tracker",
     description:
       "GPS tracker that leverages a scraped dataset, OOP principles, and Java GUI to track the distances, find the average speeds, and showcase a 2D model.",
-    languages: ["Java", "JUnit", "Scraping", "OOP"],
+    technologies: ["Java", "JUnit", "Scraping", "OOP"],
     link: "https://github.com/ameerghazal/project5-ameerghazal",
+    img: "/projects/java_animation.svg",
+    alt: "Java animation screen",
   },
   {
     title: "Recipe Application",
     description:
       "Web app, allowing users to search, bookmark, and add recipes. Recipies fetched from a public API and leveraged through netlify (CI/CD) capabilites. ",
-    languages: ["React.js", "JavaScript", "HTML/CSS", "Git"],
+    technologies: ["React.js", "JavaScript", "HTML/CSS", "Git"],
     link: "https://github.com/ameerghazal/forkify-recipe-application",
+    img: "/projects/recipies.svg",
+    alt: "Recipie application main page",
   },
   {
     title: "Car Price Prediction Model",
     description:
-      "ML supervised learning model, predecting car sales prices using Linear Regression, KNN, Decision Trees, and Random Forest algorithms from scratch.",
-    languages: ["Python", "A.I.", "Supervised Learning", "Sci-kit"],
+      "ML supervised learning model, predicting car sales prices using Linear Regression, KNN, Decision Trees, and Random Forest algorithms from scratch.",
+    technologies: ["Python", "A.I.", "Supervised Learning", "Sci-kit"],
     link: "https://github.com/ameerghazal/ML-Supervised-Learning",
+    img: "/projects/ml_sl.svg",
+    alt: "Machine Learning supervised learning graphic",
+  },
+  {
+    title: "Agent vs. Frozen Lake",
+    description:
+      "ML reinforcement learning model, training an agent to traverse any randomly chosen frozen lake maze, using DP, SARSA, Q-Learning, and Double Q from scratch.",
+    technologies: ["Python", "A.I.", "Pandas", "Numpy"],
+    link: "https://github.com/ameerghazal/ML-RL-FrozenLake",
+    img: "/projects/ml_rl.svg",
+    alt: "Machine Learning reinforcement learning frozen lake map",
+  },
+];
+
+export const pictures: IPicture[] = [
+  {
+    src: "/gallery/iccew_mic.svg",
+    alt: "Me holding a microphone at a conference.",
+    styles: "",
+  },
+  {
+    src: "/gallery/study.svg",
+    alt: "Friends and I studying.",
+    styles: "",
+  },
+  {
+    src: "/gallery/view.svg",
+    alt: "Friends and I admiring the view.",
+    styles: "",
+  },
+  {
+    src: "/gallery/foodbank.svg",
+    alt: "Paycom team at the foodbank.",
+    styles: "",
+  },
+  {
+    src: "/gallery/iccew_team.svg",
+    alt: "I-CCEW team photo.",
+    styles: "",
+  },
+  {
+    src: "/gallery/race.svg",
+    alt: "Formula 1 race.",
+    styles: "",
+  },
+  {
+    src: "/gallery/hike.svg",
+    alt: "Friends and I hiking.",
+    styles: "",
+  },
+  {
+    src: "/gallery/ski.svg",
+    alt: "Selfie ski.",
+    styles: "",
+  },
+  {
+    src: "/gallery/side.svg",
+    alt: "Side panel.",
+    styles: "",
+  },
+  {
+    src: "/gallery/flags.svg",
+    alt: "Flags on a tree.",
+    styles: "",
+  },
+  {
+    src: "/gallery/mountain.svg",
+    alt: "Mountain view from below.",
+    styles: "",
+  },
+  {
+    src: "/gallery/islam.svg",
+    alt: "The kabba and the Mecca clock tower. Alhamdulliah.",
+    styles: "",
   },
 ];

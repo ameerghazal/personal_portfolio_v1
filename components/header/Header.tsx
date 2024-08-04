@@ -4,11 +4,8 @@ import { navItems, navMedia } from "@/data";
 import React from "react";
 import { INavItem, INavMedia } from "@/data/interface";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
-/**
- * Header for the page, featuring the desktop and mobile navigation systems.
- * @returns header.
- */
 const Header = (): React.JSX.Element => {
   const variants = {
     hidden: { opacity: 0, y: -20 },
@@ -28,12 +25,12 @@ const Header = (): React.JSX.Element => {
             transition={{ ...transition, delay: 0.2 }}
             className="hidden xs:block title"
           >
-            <a
+            <Link
               href="#top"
-              className="sm:text-xs lg:text-lg text-textColor hover:text-tertiary transition-all ease-in-out duration-800"
+              className="sm:text-xs lg:text-3xl font-semibold text-textColor hover:text-tertiary transition-all ease-in-out duration-800"
             >
-              new AG();
-            </a>
+              AMEER
+            </Link>
           </motion.div>
           {/* Desktop Navigation bar. */}
           <motion.div
@@ -67,7 +64,7 @@ const Header = (): React.JSX.Element => {
             </ul>
           </motion.div>
           {/* Social media bar navigation. */}
-          <motion.div
+          {/* <motion.div
             initial="hidden"
             animate="visible"
             variants={variants}
@@ -101,7 +98,7 @@ const Header = (): React.JSX.Element => {
                 })
               }
             </ul>
-          </motion.div>
+          </motion.div> */}
 
           {/* Mobile Navigation, hamburger menu screen. */}
           <div className="flex items-center justify-center md:hidden">

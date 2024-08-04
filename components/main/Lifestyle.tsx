@@ -1,50 +1,49 @@
-import SectionHeadings from "../ui/SectionHeadings";
 import Image from "next/image";
 import React from "react";
+import { lifestyle } from "@/data";
+import { MotionValue, motion, useTransform } from "framer-motion";
 
-/**
- * Lifestyle 'about me' section.
- * @returns returns the lifestyle section.
- * @author Ameer Ghazal
- */
-const Lifestyle = (): React.JSX.Element => {
+const Lifestyle = ({
+  scrollYProgress,
+}: {
+  scrollYProgress: MotionValue<number>;
+}): React.JSX.Element => {
+  // Animation. Takes a value and maps a range to the value. Reduce scale by 20% based on progress.
+  const scale = useTransform(scrollYProgress, [0, 1], [0.7, 1]);
   return (
-    <section id="lifestyle" className="max-w-5xl pt-4">
-      <SectionHeadings heading={"Lifestyle"} />
-      <div className="flex flex-row gap-6 items-start">
-        <div className="place-content-center">
-          <p className="text-white text-lg">
-            I am a senior{" "}
-            <span className="text-textColor font-medium">
-              Computer Science and Mathematics
-            </span>{" "}
-            major at the University of Oklahoma. Concurrently, I am a{" "}
-            <span className="text-textColor font-medium">
-              Software Developer Intern at Paycom
-            </span>
-            . Further, I am{" "}
-            <span className="text-textColor font-medium">
-              Undergraduate Researcher
-            </span>{" "}
-            at the University of Oklahoma.
-            <br></br>
-            <br></br>
-            Aside from tech, I love playing basketball, hanging with friends,
-            hiking, watching movies, and traveling the world - well, at least in
-            theory, until I get the funds for it ... hopefully.
-          </p>
-        </div>
-        <div className="w-full h-full rounded overflow-hidden">
+    <motion.section
+      style={{ scale }}
+      id="lifestyle"
+      className="flex flex-col gap-16 h-screen"
+    >
+      <div
+        className="flex flex-row justify-center gap-20 mt-36
+       items-center"
+      >
+        <div className="rounded overflow-hidden shadow-lg">
           <Image
             src="/hacklahoma_solo.jpg"
             alt="Headshot."
-            className="object-cover w-full h-full"
-            width={300}
-            height={300}
+            className="object-cover"
+            width={400}
+            height={400}
           />
         </div>
+        <div className="flex flex-col gap-6 place-content-center w-1/2">
+          <h2 className="xl:text-8xl lg:text-6xl text-left text-textColor font-semibold">
+            lifestyle
+          </h2>
+          {lifestyle.map((point: string, index: number) => (
+            <p
+              key={index}
+              className="xl:text-3xl lg:text-2xl font-medium m-0 p-0 leading-[3rem]"
+            >
+              {point}
+            </p>
+          ))}
+        </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
