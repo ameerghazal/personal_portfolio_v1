@@ -29,7 +29,7 @@ const ScrollCard = ({
   return (
     <div
       ref={container}
-      className="h-screen w-full flex flex-col items-start justify-center gap-20 sticky top-[5rem]"
+      className="md:h-screen h-[80vh] w-full flex flex-col items-start justify-center gap-20 sticky top-[5rem]"
     >
       <motion.div
         className="flex flex-col relative top-[-25%] 2xl:h-[700px] 2xl:w-[1500px] xl:h-[500px] xl:w-[1200px] mxl:h-[550px] mxl:w-[1000px] lg:h-[550px] lg:w-[800px] md:h-[500px] md:w-[600px] s:h-[500px] s:w-[430px] ms:h-[580px] xs:h-fit xs:w-fit rounded-xl p-11 xs:p-10 origin-top"
