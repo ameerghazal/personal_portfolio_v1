@@ -2,8 +2,9 @@ import { MotionValue } from "framer-motion";
 import { ReactElement } from "react";
 
 export interface INavItem {
-  path: string;
+  href: string;
   title: string;
+  mobile?: boolean;
 }
 
 export interface INavMedia {
@@ -12,19 +13,29 @@ export interface INavMedia {
   link: string;
 }
 
+export interface ILifestyle {
+  bulletPoints: string[];
+  skills: ISkill[];
+}
+
 export interface IExperience {
   title: string;
   company: string;
   dates: string;
   bulletPoints: string[];
-  img?: string;
+  stack: string[];
+  img: {
+    src: string;
+    width: number;
+    height: number;
+    alt: string;
+  };
+  backgroundColor: string;
 }
 
 export interface IActivity {
   club: string;
   href: string;
-  src: string;
-  alt: string;
   title: string;
   content: string;
   linkDescription: string;
@@ -33,6 +44,12 @@ export interface IActivity {
   descriptionSize: string;
   backgroundColor: string;
   textColor: string;
+  img: {
+    src: string;
+    width: number;
+    height: number;
+    alt: string;
+  };
 }
 
 export interface IImageProp {
@@ -55,4 +72,17 @@ export interface IPicture {
   src: string;
   alt: string;
   styles: string;
+}
+
+export interface ISkill {
+  icon: ReactElement;
+  skill: string;
+}
+
+export interface IScrollCard {
+  experience: IExperience;
+  progress: MotionValue<number>;
+  range: number[];
+  targetScale: number;
+  i: number;
 }

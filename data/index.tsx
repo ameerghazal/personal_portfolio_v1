@@ -5,64 +5,100 @@ import {
   INavMedia,
   IPicture,
   IProject,
+  ILifestyle,
 } from "./interface";
 import {
   IconBrandDiscord,
   IconBrandGithub,
   IconBrandLinkedin,
+  IconBrandMongodb,
+  IconBrandNextjs,
+  IconBrandNodejs,
+  IconBrandPython,
+  IconBrandTypescript,
   IconMail,
 } from "@tabler/icons-react";
+import { DiJava } from "react-icons/di";
 
 export const navItems: INavItem[] = [
   {
-    path: "#lifestyle",
+    href: "#lifestyle",
     title: "lifestyle",
   },
   {
-    path: "#experience",
-    title: "experience",
+    href: "#experiences",
+    title: "experiences",
   },
   {
-    path: "#activites",
+    href: "#activites",
     title: "activities",
   },
   {
-    path: "#projects",
+    href: "#projects",
     title: "projects",
-  },
-  {
-    path: "#gallery",
-    title: "gallery",
   },
 ];
 
-export const lifestyle: string[] = [
-  "Hello! My name is Ameer Ghazal. I'm a Computer Science major, Mathematics minor at the University of Oklahoma.",
-  "I'm currently a Software Development Intern at Paycom and an Undergraduate Researcher at OU.",
-  "Further, I am the Finance Director for Hacklahoma and a Web Developer for the UI/UX Club.",
-  "In my free-time, I like to play basketball, film YouTube and TikTok videos, binge anime, program, and design.",
-  "I'd also like to travel the world, but we'll see how that goes...",
-];
+export const lifestyle: ILifestyle = {
+  bulletPoints: [
+    "I'm currently a Software Development Intern at Paycom and an Undergraduate Researcher at OU. Further, I am the Finance Director for Hacklahoma and a Web Developer for the UI/UX Club.",
+    "In my free-time, I like to play basketball, film YouTube and TikTok videos, binge anime, program, and design. I'd also like to travel the world, but we'll see how that goes...",
+  ],
+  skills: [
+    {
+      icon: <IconBrandTypescript />,
+      skill: "TypeScript",
+    },
+    {
+      icon: <IconBrandNextjs />,
+      skill: "Next.js",
+    },
+    {
+      icon: <IconBrandNodejs />,
+      skill: "Node.js",
+    },
+    {
+      icon: <IconBrandPython />,
+      skill: "Python",
+    },
+    {
+      icon: <DiJava />,
+      skill: "Java",
+    },
+    {
+      icon: <IconBrandMongodb />,
+      skill: "MongoDB",
+    },
+  ],
+};
 
 export const navMedia: INavMedia[] = [
   {
     name: "LinkedIn",
-    fragment: <IconBrandLinkedin width={50} height={50} />,
+    fragment: (
+      <IconBrandLinkedin className="lg:h-[2.5rem] lg:w-[2.5rem] md:h-[2rem] md:w-[2rem] " />
+    ),
     link: "https://www.linkedin.com/in/ameerghazal/",
   },
   {
     name: "GitHub",
-    fragment: <IconBrandGithub width={50} height={50} />,
+    fragment: (
+      <IconBrandGithub className="lg:h-[2.5rem] lg:w-[2.5rem]  md:h-[2rem] md:w-[2rem]" />
+    ),
     link: "https://github.com/ameerghazal",
   },
   {
     name: "Discord",
-    fragment: <IconBrandDiscord width={50} height={50} />,
+    fragment: (
+      <IconBrandDiscord className="lg:h-[2.5rem] lg:w-[2.5rem]  md:h-[2rem] md:w-[2rem] h-auto w-auto" />
+    ),
     link: "https://discordapp.com/users/ameerghazal",
   },
   {
     name: "Outlook",
-    fragment: <IconMail width={50} height={50} />,
+    fragment: (
+      <IconMail className="lg:h-[2.5rem] lg:w-[2.5rem] md:h-[2rem] md:w-[2rem] h-auto" />
+    ),
     link: "mailto:officialameerghazal@outlook.com",
   },
 ];
@@ -73,46 +109,103 @@ export const experiences: IExperience[] = [
     company: "Paycom",
     dates: "May 2024 - Present",
     bulletPoints: [
-      "Working within a team of 20 to develop a component application.",
-      "React.js, MySQL, PHP project infrastructure.",
-      "Lorem ipsum dolor sit amet.",
+      "Collaborated on a Q&A web app, improving feedback for 8000+ employees.",
+      "Designed 50+ endpoints using REST APIs and Entity Framework within .NET, enhancing data retrieval.",
+      "Won 1st place at firm-wide Hackathon with a project enhancing team assignment and recruitment.",
     ],
-  },
-  {
-    title: "Undergraduate Researcher",
-    company: "University of Oklahoma",
-    dates: "May 2024 - Present",
-    bulletPoints: [
-      "Developing an A.I. powered chatbot for search engines.",
-      "Working with many people.",
+    stack: [
+      "React.js",
+      "Typescript",
+      "C#",
+      "ASP .NET Core",
+      "MySQL",
+      "JEST",
+      "Swagger API",
     ],
+    img: {
+      width: 300,
+      height: 300,
+      src: "/experiences/paycom.svg",
+      alt: "paycom logo",
+    },
+    backgroundColor: "#008543",
   },
-  {
-    title: "Software Engineer Fellow",
-    company: "Headstarter AI",
-    dates: "July 2024 - Present",
-    bulletPoints: [
-      "Working within a team of 20 to develop a component application.",
-      "Git version control.",
-    ],
-  },
+  // {
+  //   title: "Research Assistant",
+  //   company: "University of Oklahoma",
+  //   dates: "May 2024 - Present",
+  //   bulletPoints: [
+  //     "Co-developing an AI-driven mental health chatbot, applying Large Language Models with Python to provide personalized emotional support and coping strategies.",
+  //     "Examining JSON API, comparing search engine feedback vs. chatbot output on thousands of samples.",
+  //   ],
+  //   stack: ["Python", "Google's Custom Search JSON API", "SQL"],
+  //   img: {
+  //     src: "/experiences/research.svg",
+  //     width: 100,
+  //     height: 100,
+  //     alt: "research logo",
+  //   },
+  //   backgroundColor: "#841617",
+  // },
+
   {
     title: "Software Engineer Intern",
     company: "I-CCEW",
     dates: "January 2024 - May 2024",
     bulletPoints: [
-      "Working within a team of 20 to develop a component application.",
-      "React.js, MySQL, PHP project infrastructure.",
+      "Engineered a hospital app, delivering feedback to patients through visualization and notifications.",
+      "Unified the UI with EPIC healthcare data, filtered by Qvera, optimizing storage costs by 90%.",
+      "Leveraged Git version control with JIRA, ensuring maintainable code management, mastering SDLC.",
     ],
+    stack: [
+      "Flutter",
+      "Dart",
+      "Cloud SQL",
+      "Firebase/Firestore",
+      "EPIC API/Qvera",
+    ],
+    img: {
+      src: "/experiences/iccew.svg",
+      alt: "I-CCEW logo",
+      width: 100,
+      height: 100,
+    },
+    backgroundColor: "#323232",
+  },
+  {
+    title: "Programming Instructor",
+    company: "iCode",
+    dates: "November 2023 - May 2024",
+    bulletPoints: [
+      "Instructed Python, C#, and project building with 50+ students, resulting in a 40% increase in assessment scores.",
+      "Assessed OOP principles and time complexity, fostering analytical thinking and problem-solving for students.",
+    ],
+    stack: ["C#", "Python", ".NET MAUI", "JavaScript", "OOP", "Postman"],
+    img: {
+      src: "/experiences/icode.svg",
+      alt: "icode logo",
+      width: 200,
+      height: 200,
+    },
+    backgroundColor: "#953982",
   },
   {
     title: "Software Engineer Intern",
     company: "UFLIP",
     dates: "January 2023 - November 2023",
     bulletPoints: [
-      "Working within a team of 20 to develop a component application.",
-      "Git version control.",
+      "Worked on a ticket tracking web app, displaying a live-sale feed, advanced filtering, and more for 5000+ clients.",
+      "Integrated event ticketing via an API, facilitating access to 3000+ international live events.",
+      "Prioritized Agile and client-sided approaches, generating a 20% boost in team productivity.",
     ],
+    stack: ["React.js", "JavaScript", "HTML", "CSS/SCSS", "RESTful APIs"],
+    img: {
+      src: "/experiences/uflip.svg",
+      alt: "UFLIP logo",
+      width: 200,
+      height: 200,
+    },
+    backgroundColor: "#1c75bc",
   },
 ];
 
@@ -120,75 +213,78 @@ export const activities: IActivity[] = [
   {
     club: "Hacklahoma",
     href: "https://hacklahoma.org/",
-    src: "/activites/hacklahoma_team.svg",
-    alt: "Hacklahoma team photo.",
     title: "Finance Director",
     content:
-      "for the largest hackathon in Oklahoma, stationed at the University of Oklahoma. Our team has organized for 170+ students, with partnerships from 20+ companies. We have raised over $20,000. Another exciting year coming up!",
+      "Primary fiscal allocator for the largest hackathon in Okahoma, stationed at the University of Oklahoma. Our team has organized for 170+ students, with partnerships from 20+ companies. We have raised over $20,000. Another exciting year coming up!",
     linkDescription: "Check out our website",
     headerSize: "text-xl",
     descriptionSize: "text-sm",
     backgroundColor: "#4A3B2E",
     textColor: "white",
+    img: {
+      width: 500,
+      height: 500,
+      src: "/activites/hacklahoma_team.svg",
+      alt: "Hacklahoma team photo.",
+    },
   },
   {
-    club: "OU UI/UX",
+    club: "UI/UX Club",
     href: "https://www.instagram.com/ou_uxdesign/",
-    src: "/activites/UI_logo.svg",
-    alt: "OU UI/UX club logo",
-    imgStyles: "object-center",
+    img: {
+      src: "/activites/UI_logo.svg",
+      alt: "OU UI/UX club logo",
+      width: 300,
+      height: 500,
+    },
     title: "Web Developer",
     content:
-      "for the UI/UX club at the University of Oklahoma. In the midst of creating the club's first website, featuring React.js, Node.js, and MySQL.",
-    linkDescription: "Check out our instagram",
+      "Primary webiste creator for the User Interface and User Experience club at the University of Oklahoma. Currently, our inner team of three is working on the club's first website, featuring tech-stacks: Next.js, TypeScript, and Node.js.",
+    linkDescription: "Check out our Instagram",
     headerSize: "text-md",
     descriptionSize: "text-sm",
     backgroundColor: "#584E3D",
     textColor: "white",
   },
+
   {
-    club: "iCode",
-    href: "https://icodeschool.com/",
-    src: "/experiences/icode_logo.svg",
-    alt: "iCode Logo",
-    imgStyles: "p-10",
-    title: "Programming Instructor",
-    content:
-      "for 50+ young students. Classes include core coding principles, project building, and OOP paradigms. Courses were taught in Python, C#, and JavaScript.",
-    linkDescription: "Check out the website",
-    headerSize: "text-sm",
-    descriptionSize: "text-xs",
-    backgroundColor: "#65624C",
-    textColor: "white",
-  },
-  {
-    club: "OU AI/ML",
+    club: "AI/ML Club",
     href: "https://www.instagram.com/ou.artificial/",
-    src: "/activites/AI_logo.svg",
-    alt: "OU AI/ML club logo",
+
     title: "Technical Officer",
     content:
-      "for the AI/ML club at the University of Oklahoma. Our team conducts workshops on various ML learning models and libraries, further expanding AI understanding among our 400+ club student body.",
-    linkDescription: "Checkout out our instagram",
+      "Board member of the Artifical Intelligence and Machine Learning club at the Univeristy of Oklahoma. Our team conducts workshops on various LLM's and libraries, further expanding AI understanding among our 400+ club student body.",
+    linkDescription: "Checkout out our Instagram",
     headerSize: "text-lg",
     descriptionSize: "text-sm",
     backgroundColor: "#81886A",
     textColor: "white",
+    img: {
+      width: 500,
+      height: 500,
+      src: "/activites/AI_logo.svg",
+      alt: "OU AI/ML club logo",
+    },
   },
 
   {
-    club: "OU HSLC",
+    club: "CAC HSLC",
     href: "https://www.ou.edu/sga/cac/high-school-leadership-conference",
-    src: "/activites/hslc_hype.svg",
-    alt: "OU Highschool Student Leadership Council team.",
+
     title: "Operations Officer",
     content:
-      "for the CAC High School Student Leadership Council at the University of Oklahoma. Our team works on a year-long mentorship project for 500+ highschool students, condensed into a 3-day, empowering weekend.",
+      "Board member of the University of Oklahoma's High School Student Leadership Council. Our team works on a year-long mentorship project for 500+ highschool students, condensed into a 3-day, empowering weekend.",
     linkDescription: "Check out our mission",
     headerSize: "text-lg",
     descriptionSize: "text-sm",
     backgroundColor: "#8E9C79",
     textColor: "white",
+    img: {
+      width: 500,
+      height: 500,
+      src: "/activites/hslc_hype.svg",
+      alt: "OU Highschool Student Leadership Council team.",
+    },
   },
 ];
 
@@ -198,7 +294,7 @@ export const projects: IProject[] = [
     description:
       "Personal page for the world to catch a glimpse of my life. Discover my journey and achievements, all hosted with continuous CI/CD updates. ",
     technologies: ["Next.js", "TypeScript", "Tailwind", "Framer", "GSAP"],
-    link: "https://github.com/ameerghazal/personal_portfolio",
+    link: "https://github.com/ameerghazal/personal_portfolio_v1",
     img: "/projects/portfolio.svg",
     alt: "Personal portfolio logo",
   },
@@ -214,7 +310,7 @@ export const projects: IProject[] = [
   {
     title: "Java GPS Tracker",
     description:
-      "GPS tracker that leverages a scraped dataset, OOP principles, and Java GUI to track the distances, find the average speeds, and showcase a 2D model.",
+      "GPS tracker that leverages a scraped dataset, OOP, and Java GUI to track the distances, find the average speeds, and showcase a 2D model.",
     technologies: ["Java", "JUnit", "Scraping", "OOP"],
     link: "https://github.com/ameerghazal/project5-ameerghazal",
     img: "/projects/java_animation.svg",
@@ -230,7 +326,7 @@ export const projects: IProject[] = [
     alt: "Recipie application main page",
   },
   {
-    title: "Car Price Prediction Model",
+    title: "Car Price Prediction",
     description:
       "ML supervised learning model, predicting car sales prices using Linear Regression, KNN, Decision Trees, and Random Forest algorithms from scratch.",
     technologies: ["Python", "A.I.", "Supervised Learning", "Sci-kit"],
@@ -241,7 +337,7 @@ export const projects: IProject[] = [
   {
     title: "Agent vs. Frozen Lake",
     description:
-      "ML reinforcement learning model, training an agent to traverse any randomly chosen frozen lake maze, using DP, SARSA, Q-Learning, and Double Q from scratch.",
+      "ML reinforcement learning model, training an agent to traverse any randomly chosen frozen lake maze, using DP, SARSA, Q-Learning, and Double Q.",
     technologies: ["Python", "A.I.", "Pandas", "Numpy"],
     link: "https://github.com/ameerghazal/ML-RL-FrozenLake",
     img: "/projects/ml_rl.svg",
@@ -251,10 +347,11 @@ export const projects: IProject[] = [
 
 export const pictures: IPicture[] = [
   {
-    src: "/gallery/iccew_mic.svg",
-    alt: "Me holding a microphone at a conference.",
+    src: "/gallery/ski.svg",
+    alt: "Selfie ski.",
     styles: "",
   },
+
   {
     src: "/gallery/study.svg",
     alt: "Friends and I studying.",
@@ -286,8 +383,8 @@ export const pictures: IPicture[] = [
     styles: "",
   },
   {
-    src: "/gallery/ski.svg",
-    alt: "Selfie ski.",
+    src: "/gallery/iccew_mic.svg",
+    alt: "Me holding a microphone at a conference.",
     styles: "",
   },
   {

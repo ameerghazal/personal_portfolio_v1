@@ -1,72 +1,72 @@
-import { IActivity } from "@/data/interface";
-import { MotionValue, motion, useScroll, useTransform } from "framer-motion";
+import { IScrollCard } from "@/data/interface";
+import { motion, useTransform } from "framer-motion";
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 
+/**
+ *
+ * This is a component that renders an experience card, which scales and positions itself dynamically based on the user's scroll progress.
+ * @param {IScrollCard} props - The properties for the ScrollCard component.
+ * @param {IExperience} props.experience - The experience data to display in the card, including title, company, dates, bullet points, and stack.
+ * @param {MotionValue<number>} props.progress - The scroll progress value from Framer Motion's `useScroll` hook, used to control the card's animations.
+ * @param {number[]} props.range - The range of scroll progress over which the card should animate, controlling the scaling effect.
+ * @param {number} props.targetScale - The final scale value for the card when it reaches the end of the defined scroll range.
+ * @param {number} props.i - The index of the current card, used to offset the card's position slightly.
+ *
+ * @returns {React.ReactElement} A scrollable experience card with dynamic scaling and positioning based on scroll progress.
+ * @author Ameer Ghazal
+ */
 const ScrollCard = ({
-  activity,
+  experience,
   progress,
   range,
   targetScale,
   i,
-}: {
-  activity: IActivity;
-  progress: MotionValue<number>;
-  range: number[];
-  targetScale: number;
-  i: number;
-}) => {
-  const container = React.useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ["start end", "start start"],
-  });
-
-  // Store the transform for the image scaling.
-  const imageScale = useTransform(scrollYProgress, [0, 1], [1.5, 1]);
+}: IScrollCard): React.ReactElement => {
+  const container = React.useRef<HTMLDivElement | null>(null);
   const scale = useTransform(progress, range, [1, targetScale]);
 
   return (
     <div
       ref={container}
-      className="h-screen flex flex-col items-start justify-center gap-20 sticky top-[5rem]"
+      className="h-screen w-full flex flex-col items-start justify-center gap-20 sticky top-[5rem]"
     >
       <motion.div
-        className="flex flex-col relative top-[-25%] h-[750px] w-[1250px] rounded-[1.5rem] p-[50px] origin-top"
+        className="flex flex-col relative top-[-25%] 2xl:h-[700px] 2xl:w-[1500px] xl:h-[500px] xl:w-[1200px] mxl:h-[550px] mxl:w-[1000px] lg:h-[550px] lg:w-[800px] md:h-[500px] md:w-[600px] s:h-[500px] s:w-[430px] ms:h-[580px] xs:h-fit xs:w-fit rounded-xl p-11 xs:p-10 origin-top"
         style={{
-          background: activity.backgroundColor,
+          background: experience.backgroundColor,
           scale,
           top: `calc(-5vh + ${i * 25}px)`,
         }}
       >
-        <div className="flex h-full pt-[25px] gap-[50px]">
-          <div className="w-[40%] relative top-[10%]">
-            <h2 className="m-0 text-6xl font-bold mb-[1rem]">
-              {activity.club}
-            </h2>
-            <p className="text-3xl mb-[1rem]">
-              <span className="text-4xl font-semibold">{activity.title} </span>
-              {activity.content}
-            </p>
-            <Link
-              target="_blank"
-              className="text-3xl hover:text-tertiary active:text-textColor transition-all duration-150 ease-linear"
-              href={activity.href}
-            >
-              {activity.linkDescription} &rarr;
-            </Link>
+        <div className="flex flex-col gap-10 w-full h-full">
+          <div className="flex justify-between items-center h-fit w-full">
+            <div>
+              <h1 className="2xl:text-7xl xl:text-5xl md:text-4xl s:text-xl ms:text-lg font-semibold m-0 p-0">
+                {experience.title} @ {experience.company}
+              </h1>
+              <span className="2xl:text-5xl xl:text-3xl md:text-2xl ms:text-sm text-textGray">
+                {experience.dates}
+              </span>
+            </div>
+            <Image
+              src={experience.img.src}
+              width={experience.img.width}
+              height={experience.img.height}
+              alt={experience.img.alt}
+              className="object-cover lg:w-[20%] lg:block hidden"
+            />
           </div>
-
-          <div className="relative w-[60%] rounded-[1.5rem] overflow-hidden h-full">
-            <motion.div className="w-full h-full" style={{ scale: imageScale }}>
-              <Image
-                src={activity.src}
-                alt={activity.alt}
-                fill
-                className="object-cover"
-              />
-            </motion.div>
+          <ul className="2xl:text-5xl lg:text-3xl md:text-2xl s:text-lg ms:text-base s:block w-full max-w-[100rem] h-full">
+            {experience.bulletPoints.map((point: string, index: number) => (
+              <li key={index} className="font-normal mb-4">
+                {point}
+              </li>
+            ))}
+          </ul>
+          <div className="font-normal 2xl:text-5xl lg:text-2xl s:text-lg ms:text-sm s:block w-full">
+            <span className="font-semibold">Stack:</span>{" "}
+            {experience.stack.join(", ")}
           </div>
         </div>
       </motion.div>
