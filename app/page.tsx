@@ -11,8 +11,6 @@ import { motion, useScroll } from "framer-motion";
 import Lenis from "lenis";
 
 export default function Home(): JSX.Element {
-  const [_dimension, setDimension] = React.useState({ width: 0, height: 0 });
-
   // Smooth scrolling.
   React.useEffect(() => {
     const lenis = new Lenis();
@@ -21,17 +19,8 @@ export default function Home(): JSX.Element {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
-    const resize = () => {
-      setDimension({ width: window.innerWidth, height: window.innerHeight });
-    };
 
-    window.addEventListener("resize", resize);
     requestAnimationFrame(raf);
-    resize();
-
-    return () => {
-      window.removeEventListener("resize", resize);
-    };
   }, []);
 
   const container = React.useRef<HTMLDivElement | null>(null);
@@ -62,10 +51,3 @@ export default function Home(): JSX.Element {
     </>
   );
 }
-// 373229 #372113
-// BFb1c1 purple accent
-// OG gray: 242526
-// OG Brown:#55423d
-// nice gree: #708D81
-// green: #709176
-// Green: rgb(63, 76, 50)
