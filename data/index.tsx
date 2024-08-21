@@ -130,23 +130,23 @@ export const experiences: IExperience[] = [
     },
     backgroundColor: "#008543",
   },
-  // {
-  //   title: "Research Assistant",
-  //   company: "University of Oklahoma",
-  //   dates: "May 2024 - Present",
-  //   bulletPoints: [
-  //     "Co-developing an AI-driven mental health chatbot, applying Large Language Models with Python to provide personalized emotional support and coping strategies.",
-  //     "Examining JSON API, comparing search engine feedback vs. chatbot output on thousands of samples.",
-  //   ],
-  //   stack: ["Python", "Google's Custom Search JSON API", "SQL"],
-  //   img: {
-  //     src: "/experiences/research.svg",
-  //     width: 100,
-  //     height: 100,
-  //     alt: "research logo",
-  //   },
-  //   backgroundColor: "#841617",
-  // },
+  {
+    title: "Researcher",
+    company: "University of Oklahoma",
+    dates: "August 2024 - Present",
+    bulletPoints: [
+      "Scrape 9,000+ comments using the YouTube API and Python to build a dataset for disinformation detection.",
+      "Apply Natural Language Processing to train ML models, aiming for 85% accuracy in spam classification.",
+    ],
+    stack: ["Python", "Scraping", "NLP", "Machine Learning"],
+    img: {
+      src: "/experiences/researcher.svg",
+      width: 100,
+      height: 100,
+      alt: "research logo",
+    },
+    backgroundColor: "#841617",
+  },
 
   {
     title: "Software Engineer Intern",

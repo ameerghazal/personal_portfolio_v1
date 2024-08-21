@@ -70,7 +70,7 @@ const Header = (): React.ReactElement => {
                 </motion.li>
               ))}
               <Link
-                href="/Ameer_Resume_Curr.pdf"
+                href="/Ameer_Official_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               >
